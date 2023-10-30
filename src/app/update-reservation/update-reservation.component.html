@@ -28,7 +28,7 @@
                 (ngModelChange)=" currentreservation.datefin= $event" name="datefin" class="form-control">
 
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4"><label>categorie</label>
+        <div class="col-sm-4 col-md-4 col-lg-4"><label>type de client</label>
             <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId">
                 <option *ngFor="let cat of categories" [value]="cat.idCat">
                     {{cat.nomCat}}
