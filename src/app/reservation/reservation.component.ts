@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  reservation } from '../model/reservation.model';
 import { ReservationService } from '../reservation.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-reservation',
@@ -8,7 +9,7 @@ import { ReservationService } from '../reservation.service';
 })
 export default class ReservationComponent  {
   reservations: reservation[];
-  constructor(private reservationservice: ReservationService  ) {
+  constructor(private reservationservice: ReservationService ,public authService: AuthService ) {
     this.reservations = reservationservice.listereservations();
     }
     supprimerreservation(r: reservation)

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../reservation.service';
 import { reservation } from '../model/reservation.model';
-import { Categorie } from '../model/categorie.model';
+import { Type } from '../model/type.model';
 
 @Component({
   selector: 'app-update-reservation',
@@ -11,21 +11,22 @@ import { Categorie } from '../model/categorie.model';
 })
 export class UpdateReservationComponent {
   currentreservation = new reservation();
-  categories! : Categorie[];
-updatedCatId! : number;
+  types! : Type[];
+  updatedtyid! : number;
   constructor(private activatedRoute: ActivatedRoute,private router :Router,
 
   private reservationService: ReservationService) { }
   ngOnInit() {
+    this.types = this.reservationService.listetypes();
   // console.log(this.route.snapshot.params.id);
-  this.categories = this.reservationService.listeCategories();
   this.currentreservation = 
   this.reservationService.consulterreservation(this.activatedRoute.snapshot.params['id']);
-  this.updatedCatId=this.currentreservation.categorie.idCat;
-  
+  this.updatedtyid=this.currentreservation.type.idty;
+
   }
   updatereservation() {
-    this.currentreservation.categorie=this.reservationService.consulterCategorie(this.updatedCatId);
+    this.currentreservation.type=this.reservationService.consultertypes(this.updatedtyid);
+
     this.reservationService.updatereservation(this.currentreservation);
     this.router.navigate(['reservations']);
     }

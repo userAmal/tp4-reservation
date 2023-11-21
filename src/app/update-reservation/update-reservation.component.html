@@ -28,10 +28,11 @@
                 (ngModelChange)=" currentreservation.datefin= $event" name="datefin" class="form-control">
 
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4"><label>type de client</label>
-            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId">
-                <option *ngFor="let cat of categories" [value]="cat.idCat">
-                    {{cat.nomCat}}
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>type de reservation</label>
+            <select class="form-control form-control-lg" id="idty" name="idty" [(ngModel)]="updatedtyid">
+                <option *ngFor="let ty of types" [value]="ty.idty">
+                    {{ty.typereservation}}
                 </option>
             </select>
         </div>

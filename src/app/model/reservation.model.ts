@@ -1,10 +1,9 @@
-import { Categorie } from "./categorie.model";
-
+import { Type } from "./type.model";
 export class reservation {
     numreservation! : number;
     nomclient! : string;
     prixsejour! : number;
      datedebut! : Date ;
      datefin! : Date ;
-     categorie! :Categorie;
+     type !: Type;
     }

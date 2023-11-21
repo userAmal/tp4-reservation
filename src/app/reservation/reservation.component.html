@@ -2,7 +2,7 @@
     <div class="card shadow mb-4">
     <div class="card-body">
     <table class="table table-striped">
-    <tr> <th>numéro de reservation</th><th>Nom et prénom de client </th> <th>Prix séjour</th> <th>Date début</th> <th>Date fin</th><th>type de client</th></tr>
+    <tr> <th>numéro de reservation</th><th>Nom et prénom de client </th> <th>Prix séjour</th> <th>Date début</th> <th>Date fin</th><th>type de reservation</th></tr>
     <tbody *ngFor="let reservation of reservations">
     <tr >
     <td>{{reservation.numreservation}}</td>
@@ -10,9 +10,9 @@
     <td>{{reservation.prixsejour}}</td>
     <td>{{reservation.datedebut | date:'dd/MM/yyyy'}}</td>
     <td>{{reservation.datefin | date:'dd/MM/yyyy'}}</td>
-    <td>{{reservation.categorie.nomCat}}</td>
-    <td><a class="btn btn-danger" (click)="supprimerreservation(reservation)">Supprimer</a></td>
-    <td><a class="btn btn-success" [routerLink]="['/updatereservation',reservation.numreservation]">Modifier</a></td>
+    <td>{{reservation.type.typereservation}}</td>
+    <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerreservation(reservation)">Supprimer</a></td>
+    <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updatereservation',reservation.numreservation]">Modifier</a></td>
     </tr>
     </tbody>
     </table>

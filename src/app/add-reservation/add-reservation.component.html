@@ -24,10 +24,10 @@
             <input type="date" [(ngModel)]="newReservation.datefin" name="datefin" class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>type de client</label>
-            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdCat">
-                <option *ngFor="let cat of categories" [value]="cat.idCat">
-                    {{cat.nomCat}}
+            <label>type de reservation</label>
+            <select class="form-control form-control-lg" id="idty" name="idty" [(ngModel)]="newidty">
+                <option *ngFor="let ty of types" [value]="ty.idty">
+                    {{ty.typereservation}}
                 </option>
             </select>
         </div>

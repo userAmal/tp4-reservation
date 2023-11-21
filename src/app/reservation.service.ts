@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { reservation } from './model/reservation.model';
 import { Router } from '@angular/router';
-import { Categorie } from './model/categorie.model';
+import { Type } from './model/type.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
   reservations: reservation[];
   reservation! : reservation;
-  categories!:Categorie[];
+  types :Type[];
   constructor(private router :Router,) {
-    this.categories=[      {idCat : 1, nomCat : "le client suivant est nouveau"},
-    {idCat : 2, nomCat : "Le client a déjà séjourné précédemment"}]
+    this.types=[
+      {idty : 1, typereservation : "en ligne"},
+      {idty : 2, typereservation: "sur place"
+    }]
     this.reservations = [
-    {numreservation : 1 , nomclient : "amal bouaouina", prixsejour : 400, datedebut : new Date("11/01/2011"),datefin : new Date("11/04/2011"),categorie : {idCat : 1, nomCat : "le client suivant est nouveau"}},
-    {numreservation : 2 , nomclient : "Syrine bousetta", prixsejour : 250, datedebut : new Date("12/05/2011"),datefin : new Date("12/07/2011"),categorie : {idCat : 2, nomCat :" Le client a déjà séjourné précédemment"}},
-    {numreservation : 3 , nomclient : "ranim jrad", prixsejour : 500, datedebut : new Date("01/01/2012"),datefin : new Date("01/05/2012"),categorie : {idCat : 1, nomCat : "le client suivant est nouveau"}},
+    {numreservation : 1 , nomclient : "amal bouaouina", prixsejour : 400, datedebut : new Date("11/01/2011"),datefin : new Date("11/04/2011"),type :{idty : 1, typereservation : "en ligne"}},
+    {numreservation : 2 , nomclient : "Syrine bousetta", prixsejour : 250, datedebut : new Date("12/05/2011"),datefin : new Date("12/07/2011"),type :{idty : 2, typereservation : "sur place"}},
+    {numreservation : 3 , nomclient : "ranim jrad", prixsejour : 500, datedebut : new Date("01/01/2012"),datefin : new Date("01/05/2012"),type :{idty : 1, typereservation : "en ligne"}},
 
     ]
     
@@ -65,11 +68,12 @@ export class ReservationService {
   this.trierreservations();
 
 }
-listeCategories():Categorie[] {
-  return this.categories;
+listetypes():Type[] {
+  return this.types;
   }
-  consulterCategorie(id:number): Categorie{ 
-  return this.categories.find(cat => cat.idCat == id)!;
+  consultertypes(id:number): Type{ 
+  return this.types.find(ty => ty.idty == id)!;
   }
+
     
 }

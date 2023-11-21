@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import ReservationComponent from './reservation/reservation.component';
 import { AddReservationComponent } from './add-reservation/add-reservation.component';
 import { UpdateReservationComponent } from './update-reservation/update-reservation.component';
+import { LoginComponent } from './login/login.component';
+import { ReservationGuard } from './reservation.guard';
+
 
 @NgModule({
   declarations: [
@@ -14,13 +17,17 @@ import { UpdateReservationComponent } from './update-reservation/update-reservat
     ReservationComponent,
     AddReservationComponent,
     UpdateReservationComponent,
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ReservationGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

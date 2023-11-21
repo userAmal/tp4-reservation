@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { reservation } from '../model/reservation.model';
 import { ReservationService } from '../reservation.service';
 import { Router } from '@angular/router';
-import { Categorie } from '../model/categorie.model';
+import { Type } from '../model/type.model';
 @Component({
   selector: 'app-add-reservation',
   templateUrl: './add-reservation.component.html',
@@ -10,17 +10,21 @@ import { Categorie } from '../model/categorie.model';
 })
 export class AddReservationComponent {
   newReservation = new reservation();
-  categories! : Categorie[];
-  newIdCat! : number;
-  newCategorie! : Categorie;
+  types! : Type[];
+  newidty! : number;
+  newtype! : Type;
+
+
   constructor(private reservationService: ReservationService, private router:Router) { }
   ngOnInit() {
-    this.categories = this.reservationService.listeCategories();
+    this.types = this.reservationService.listetypes();
     }
     addreservation() {
-    this.newCategorie = 
-    this.reservationService.consulterCategorie(this.newIdCat);
-    this.newReservation.categorie = this.newCategorie;
+      console.log(this.newidty);
+        this.newtype = 
+        this.reservationService.consultertypes(this.newidty);
+        this.newReservation.type = this.newtype;
+        
     this.reservationService.ajouterreservation(this.newReservation);
     this.router.navigate(['reservations']);
     }
